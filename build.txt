@@ -1,0 +1,3 @@
+displayName = Fishing Overhaul
+author = PCAviator18
+version = 0.1
