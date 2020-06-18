@@ -4,27 +4,30 @@ using Terraria.ModLoader;
 
 namespace FishingOverhaul.Items.Bait
 {
-  public class SuperBait : ModItem
+  public class JailBait : ModItem
   {
+
     public override void SetStaticDefaults()
     {
-      Tooltip.SetDefault("The best bait");
+      Tooltip.SetDefault("Too good to be true");
     }
 
     public override void SetDefaults()
     {
       item.maxStack = 999;
-      item.value = Item.buyPrice(0, 0, 5, 0);
-      item.rare = 5;
-      item.bait = 20;
+      item.value = Item.sellPrice(1, 0, 18, 0);
+      item.rare = 6;
+      item.bait = 100;
     }
 
     public override void AddRecipes()
     {
       ModRecipe recipe = new ModRecipe(mod);
-      recipe.AddIngredient(ItemID.Wood, 2);
-      recipe.AddTile(TileID.WorkBenches);
-      recipe.SetResult(this, 10);
+      recipe.AddIngredient(ItemID.EnchantedNightcrawler, 6);
+      recipe.AddIngredient(ItemID.SoulofLight, 1);
+      recipe.AddTile(TileID.Campfire);
+
+      recipe.SetResult(this, 6);
       recipe.AddRecipe();
     }
   }

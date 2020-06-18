@@ -1,3 +1,4 @@
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -7,25 +8,30 @@ namespace FishingOverhaul.Items.Tools
   {
     public override void SetStaticDefaults()
     {
-      // DisplayName.SetDefault("FishStick"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-      Tooltip.SetDefault("What are you a gay fish?");
+      Tooltip.SetDefault("Do you like fish sticks?");
     }
 
     public override void SetDefaults()
     {
       item.CloneDefaults(ItemID.GoldenFishingRod);
-      item.fishingPole = 160;
-      item.value = 69000;
-      item.rare = 9;
-      item.shoot = mod.ProjectileType("FishStickBobber");
-      item.shootSpeed = 18f;
+      item.fishingPole = 100;
+      item.value = Item.buyPrice(2, 0, 0, 0);
+      item.rare = 11;
+      item.shoot = mod.ProjectileType("BobberPurple");
+      item.shootSpeed = 20f;
+
+      ItemID.Sets.CanFishInLava[item.type] = true;
     }
 
     public override void AddRecipes()
     {
       ModRecipe recipe = new ModRecipe(mod);
-      recipe.AddIngredient(ItemID.DirtBlock, 10);
-      recipe.AddTile(TileID.WorkBenches);
+      recipe.AddIngredient(ItemID.GoldenFishingRod, 1);
+      recipe.AddIngredient(ItemID.PurpleString, 1);
+      recipe.AddIngredient(ItemID.HallowedBar, 40);
+      recipe.AddIngredient(ItemID.SoulofNight, 40);
+      recipe.AddTile(TileID.Anvils);
+
       recipe.SetResult(this);
       recipe.AddRecipe();
     }
